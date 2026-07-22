@@ -53,7 +53,16 @@ const impactCards = [
 function App() {
   const [selectedCards, setSelectedCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPlanSaved, setIsPlanSaved] = useState(false);
   const hasSelection = selectedCards.length > 0;
+
+  const selectedPlanText = selectedCards
+    .map((cardId) => {
+      const card = impactCards.find((item) => item.id === cardId);
+      return card ? `${card.name} · ${card.amount.replace('정기 ', '')}` : '';
+    })
+    .filter(Boolean)
+    .join(' / ');
 
   const toggleCard = (cardId) => {
     setSelectedCards((current) =>
@@ -63,8 +72,19 @@ function App() {
 
   const openPlanModal = () => {
     if (hasSelection) {
+      setIsPlanSaved(false);
       setIsModalOpen(true);
     }
+  };
+
+  const closePlanModal = () => {
+    setIsModalOpen(false);
+    setIsPlanSaved(false);
+  };
+
+  const reviewOtherEffects = () => {
+    closePlanModal();
+    document.getElementById('impact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -153,33 +173,57 @@ function App() {
       </section>
 
       {isModalOpen ? (
-        <div className="modal-backdrop" role="presentation" onMouseDown={() => setIsModalOpen(false)}>
+        <div className="modal-backdrop" role="presentation" onMouseDown={closePlanModal}>
           <section
-            className="plan-modal"
+            className={`plan-modal${isPlanSaved ? ' saved' : ''}`}
             role="dialog"
             aria-modal="true"
             aria-labelledby="plan-modal-title"
             onMouseDown={(event) => event.stopPropagation()}
           >
-            <button
-              type="button"
-              className="modal-close"
-              onClick={() => setIsModalOpen(false)}
-              aria-label="팝업 닫기"
-            >
+            <button type="button" className="modal-close" onClick={closePlanModal} aria-label="팝업 닫기">
               ×
             </button>
-            <h2 id="plan-modal-title">나의 후원 계획을 저장해 드릴까요?</h2>
-            <p>선택하신 후원 내용과 아이들의 이야기를 이메일로 보내드립니다.</p>
-            <form className="plan-form" onSubmit={(event) => event.preventDefault()}>
-              <label htmlFor="support-email">이메일 주소</label>
-              <input id="support-email" type="email" placeholder="name@example.com" required />
-              <label className="consent-row">
-                <input type="checkbox" />
-                <span>후원 소식 및 캠페인 안내 수신 동의</span>
-              </label>
-              <button type="submit">이메일로 저장하기</button>
-            </form>
+
+            {isPlanSaved ? (
+              <div className="save-complete">
+                <p className="modal-eyebrow">저장 완료</p>
+                <h2 id="plan-modal-title">후원 계획이 저장되었습니다</h2>
+                <p>
+                  선택하신 ‘{selectedPlanText}’ 계획을 이메일로 보내드렸습니다.
+                </p>
+                <div className="complete-actions">
+                  <a href="https://love.holt.or.kr/" className="primary-modal-action">
+                    지금 후원 시작하기
+                  </a>
+                  <button type="button" className="secondary-modal-action" onClick={reviewOtherEffects}>
+                    다른 후원 효과 살펴보기
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <p className="modal-eyebrow">Holt Children&apos;s Services</p>
+                <h2 id="plan-modal-title">나의 후원 계획을 저장해 드릴까요?</h2>
+                <p>선택하신 후원 내용과 아이들의 이야기를 이메일로 보내드립니다.</p>
+                <form className="plan-form" onSubmit={(event) => {
+                  event.preventDefault();
+                  setIsPlanSaved(true);
+                }}>
+                  <label htmlFor="support-email">이메일 주소</label>
+                  <input id="support-email" type="email" placeholder="name@example.com" required />
+                  <label className="consent-row">
+                    <input type="checkbox" required />
+                    <span>개인정보 수집 및 이용 동의</span>
+                  </label>
+                  <label className="consent-row">
+                    <input type="checkbox" />
+                    <span>광고성 정보 수신 동의</span>
+                  </label>
+                  <button type="submit">이메일로 저장하기</button>
+                </form>
+              </>
+            )}
           </section>
         </div>
       ) : null}

@@ -296,7 +296,7 @@ img {
 .plan-button::after {
   position: absolute;
   inset: -45%;
-  background: linear-gradient(110deg, transparent 36%, rgba(255, 248, 234, 0.9) 48%, transparent 62%);
+  background: linear-gradient(110deg, transparent 36%, rgba(255, 255, 255, 0.96) 48%, transparent 62%);
   content: "";
   opacity: 0;
   transform: translateX(-55%) rotate(8deg);
@@ -443,13 +443,25 @@ img {
 
 .plan-modal {
   position: relative;
-  width: min(100%, 520px);
-  padding: 38px;
-  border: 1px solid rgba(95, 71, 52, 0.16);
+  width: min(100%, 760px);
+  padding: 58px;
+  border: 1px solid rgba(61, 100, 170, 0.18);
   border-radius: 8px;
-  background: #fff8ea;
-  box-shadow: 0 34px 90px rgba(39, 27, 18, 0.28);
+  background: #ffffff;
+  box-shadow:
+    0 34px 90px rgba(39, 27, 18, 0.24),
+    0 0 0 8px rgba(61, 100, 170, 0.06);
   color: #3d3026;
+}
+
+.plan-modal::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 8px;
+  background: #3d64aa;
+  content: "";
 }
 
 .modal-close {
@@ -462,8 +474,8 @@ img {
   place-items: center;
   border: 0;
   border-radius: 8px;
-  background: rgba(95, 71, 52, 0.08);
-  color: #5b3f2d;
+  background: rgba(61, 100, 170, 0.08);
+  color: #3d64aa;
   cursor: pointer;
   font-size: 28px;
   line-height: 1;
@@ -478,44 +490,54 @@ img {
 
 .plan-modal h2 {
   padding-right: 42px;
-  font-size: 28px;
+  color: #244b91;
+  font-size: 36px;
   line-height: 1.24;
 }
 
 .plan-modal > p {
-  margin-top: 14px;
+  max-width: 560px;
+  margin-top: 16px;
   color: rgba(61, 48, 38, 0.72);
-  font-size: 17px;
+  font-size: 19px;
   font-weight: 700;
   line-height: 1.7;
 }
 
+.modal-eyebrow {
+  margin: 0 0 14px;
+  color: #3d64aa;
+  font-size: 14px;
+  font-weight: 950;
+}
+
 .plan-form {
   display: grid;
-  gap: 14px;
-  margin-top: 28px;
+  gap: 16px;
+  margin-top: 34px;
 }
 
 .plan-form label {
-  color: #4c392c;
-  font-size: 15px;
+  color: #28416d;
+  font-size: 16px;
   font-weight: 900;
 }
 
 .plan-form input[type="email"] {
   width: 100%;
-  min-height: 52px;
-  padding: 0 16px;
-  border: 2px solid rgba(95, 71, 52, 0.2);
+  min-height: 58px;
+  padding: 0 18px;
+  border: 2px solid rgba(61, 100, 170, 0.2);
   border-radius: 8px;
-  background: #fffdf7;
+  background: #ffffff;
   color: #3d3026;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
 }
 
 .plan-form input[type="email"]:focus {
-  border-color: #8d5f3b;
+  border-color: #3d64aa;
+  box-shadow: 0 0 0 4px rgba(61, 100, 170, 0.12);
   outline: none;
 }
 
@@ -523,25 +545,75 @@ img {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 4px 0 8px;
+  margin: 2px 0;
+  color: #3d3026;
 }
 
 .consent-row input {
   width: 18px;
   height: 18px;
-  accent-color: #7a543b;
+  accent-color: #3d64aa;
 }
 
 .plan-form button[type="submit"] {
-  min-height: 54px;
+  min-height: 60px;
+  margin-top: 8px;
   border: 0;
   border-radius: 8px;
-  background: #7a543b;
-  color: #fff8ea;
+  background: #3d64aa;
+  color: #ffffff;
   cursor: pointer;
+  font-size: 18px;
+  font-weight: 950;
+  box-shadow: 0 18px 38px rgba(61, 100, 170, 0.26);
+}
+
+.save-complete {
+  display: grid;
+  justify-items: start;
+  min-height: 360px;
+  align-content: center;
+}
+
+.save-complete > p:not(.modal-eyebrow) {
+  max-width: 620px;
+  margin: 18px 0 0;
+  color: rgba(61, 48, 38, 0.74);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.complete-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.primary-modal-action,
+.secondary-modal-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 22px;
+  border-radius: 8px;
   font-size: 17px;
   font-weight: 950;
-  box-shadow: 0 16px 34px rgba(86, 62, 42, 0.2);
+}
+
+.primary-modal-action {
+  background: #3d64aa;
+  color: #ffffff;
+  box-shadow: 0 18px 38px rgba(61, 100, 170, 0.24);
+}
+
+.secondary-modal-action {
+  border: 2px solid rgba(61, 100, 170, 0.2);
+  background: #ffffff;
+  color: #244b91;
+  cursor: pointer;
 }
 
 @keyframes scrollChevron {
@@ -729,10 +801,24 @@ img {
   }
 
   .plan-modal {
-    padding: 32px 24px 26px;
+    padding: 38px 24px 28px;
   }
 
   .plan-modal h2 {
-    font-size: 24px;
+    font-size: 27px;
+  }
+
+  .plan-modal > p,
+  .save-complete > p:not(.modal-eyebrow) {
+    font-size: 17px;
+  }
+
+  .complete-actions {
+    width: 100%;
+  }
+
+  .primary-modal-action,
+  .secondary-modal-action {
+    width: 100%;
   }
 }
