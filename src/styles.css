@@ -50,12 +50,12 @@ img {
 .hero::after {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: -8vh;
   left: 0;
   z-index: -1;
-  height: 30vh;
-  min-height: 210px;
-  background: linear-gradient(180deg, rgba(255, 248, 234, 0) 0%, #fff8ea 86%);
+  height: 26vh;
+  min-height: 170px;
+  background: linear-gradient(180deg, rgba(255, 248, 234, 0) 0%, #fff8ea 82%);
   content: "";
   pointer-events: none;
 }
@@ -97,72 +97,72 @@ img {
   display: grid;
   align-content: center;
   min-height: calc(100svh - 96px);
-  padding: 0 0 14vh;
+  padding: 0 0 16vh;
 }
 
 .hero-copy h1,
 .hero-copy p {
   margin: 0;
-  color: #fff3dc;
+  color: #3d3026;
   letter-spacing: 0;
   word-break: keep-all;
   text-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.34),
-    0 14px 38px rgba(0, 0, 0, 0.24);
+    0 2px 10px rgba(255, 248, 234, 0.42),
+    0 10px 28px rgba(255, 248, 234, 0.26);
 }
 
 .hero-copy h1 {
   max-width: 800px;
-  font-size: clamp(3.4rem, 7.2vw, 7.4rem);
+  font-size: 30px;
   font-weight: 900;
-  line-height: 1.08;
+  line-height: 1.28;
 }
 
 .hero-copy p {
   max-width: 620px;
   margin-top: 30px;
-  color: rgba(255, 243, 220, 0.9);
-  font-size: clamp(1rem, 1.4vw, 1.22rem);
-  font-weight: 600;
-  line-height: 1.95;
+  color: #3d3026;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.72;
 }
 
 .hero-copy strong {
-  color: #fff8ea;
+  color: #2f241c;
   font-weight: 900;
 }
 
 .scroll-cue {
   position: absolute;
   right: 0;
-  bottom: 38px;
+  bottom: 42px;
   left: 0;
   z-index: 3;
   display: grid;
   justify-items: center;
   width: max-content;
   margin: 0 auto;
-  color: #fff8ea;
-  font-size: 0.82rem;
+  color: #3d3026;
+  font-size: 18px;
   font-weight: 900;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.42);
+  text-shadow: 0 2px 10px rgba(255, 248, 234, 0.7);
 }
 
 .chevron-stack {
   position: relative;
   display: grid;
   justify-items: center;
-  width: 36px;
-  height: 34px;
-  margin-bottom: 4px;
+  width: 46px;
+  height: 42px;
+  margin-bottom: 6px;
 }
 
 .chevron-stack span {
   position: absolute;
-  width: 18px;
-  height: 18px;
-  border-right: 4px solid currentColor;
-  border-bottom: 4px solid currentColor;
+  width: 22px;
+  height: 22px;
+  border-right: 5px solid currentColor;
+  border-bottom: 5px solid currentColor;
   opacity: 0;
   transform: rotate(45deg) translate(-8px, -8px);
   animation: scrollChevron 1.55s infinite;
@@ -174,12 +174,12 @@ img {
 }
 
 .chevron-stack span:nth-child(2) {
-  top: 8px;
+  top: 10px;
   animation-delay: 0.18s;
 }
 
 .chevron-stack span:nth-child(3) {
-  top: 16px;
+  top: 20px;
   animation-delay: 0.36s;
 }
 
@@ -199,7 +199,7 @@ img {
 .impact-kicker {
   margin: 0;
   color: rgba(61, 48, 38, 0.72);
-  font-size: 1rem;
+  font-size: 22px;
   font-weight: 800;
   text-align: center;
 }
@@ -222,14 +222,6 @@ img {
   box-shadow: 0 24px 70px rgba(86, 62, 42, 0.11);
 }
 
-.impact-card span {
-  display: block;
-  margin-bottom: 12px;
-  color: rgba(105, 78, 57, 0.62);
-  font-size: 0.84rem;
-  font-weight: 900;
-}
-
 .impact-card h2,
 .impact-card p,
 .impact-card strong {
@@ -240,13 +232,13 @@ img {
 
 .impact-card h2 {
   color: #3d3026;
-  font-size: clamp(1.8rem, 2.6vw, 2.7rem);
+  font-size: 25px;
   line-height: 1.15;
 }
 
 .impact-card p {
   color: rgba(61, 48, 38, 0.72);
-  font-size: 1.04rem;
+  font-size: 17px;
   font-weight: 600;
   line-height: 1.7;
 }
@@ -254,7 +246,7 @@ img {
 .impact-card strong {
   display: block;
   color: #8d5f3b;
-  font-size: clamp(1.42rem, 2vw, 2rem);
+  font-size: 17px;
   font-weight: 950;
 }
 
@@ -308,11 +300,7 @@ img {
 
   .hero-copy {
     min-height: calc(100svh - 82px);
-    padding-bottom: 16vh;
-  }
-
-  .hero-copy h1 {
-    font-size: clamp(3.1rem, 14vw, 5.7rem);
+    padding-bottom: 18vh;
   }
 
   .impact-grid {
@@ -336,19 +324,18 @@ img {
   }
 
   .hero-copy h1 {
-    font-size: clamp(2.65rem, 13vw, 4.2rem);
     line-height: 1.12;
   }
 
   .hero-copy p {
     margin-top: 24px;
-    font-size: 0.98rem;
+    font-size: 20px;
     line-height: 1.86;
   }
 
   .scroll-cue {
-    bottom: 30px;
-    font-size: 0.78rem;
+    bottom: 34px;
+    font-size: 16px;
   }
 
   .impact-section {

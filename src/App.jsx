@@ -69,7 +69,6 @@ function App() {
           {impactCards.map((card) => (
             <article className="impact-card" key={card.amount}>
               <div>
-                <span>변화의 이름</span>
                 <h2>{card.name}</h2>
               </div>
               <p>{card.effect}</p>
