@@ -1,6 +1,6 @@
 :root {
   color: #fff8e8;
-  background: #15100c;
+  background: #fff8ea;
   font-family:
     Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -21,7 +21,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #15100c;
+  background: #fff8ea;
 }
 
 a {
@@ -37,9 +37,7 @@ img {
 .landing-page {
   min-height: 100vh;
   overflow-x: hidden;
-  background:
-    linear-gradient(180deg, rgba(21, 16, 12, 0) 0%, #15100c 100%),
-    #15100c;
+  background: #fff8ea;
 }
 
 .hero {
@@ -49,23 +47,27 @@ img {
   isolation: isolate;
 }
 
+.hero::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  height: 30vh;
+  min-height: 210px;
+  background: linear-gradient(180deg, rgba(255, 248, 234, 0) 0%, #fff8ea 86%);
+  content: "";
+  pointer-events: none;
+}
+
 .hero-bg {
   position: absolute;
   inset: 0;
-  z-index: -3;
+  z-index: -2;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 62% center;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background:
-    linear-gradient(180deg, rgba(15, 10, 7, 0.12) 0%, rgba(15, 10, 7, 0.2) 52%, #15100c 100%),
-    linear-gradient(90deg, rgba(17, 12, 9, 0.76) 0%, rgba(17, 12, 9, 0.44) 34%, rgba(17, 12, 9, 0.08) 72%);
 }
 
 .site-header,
@@ -90,10 +92,12 @@ img {
 }
 
 .hero-copy {
+  position: relative;
+  z-index: 2;
   display: grid;
   align-content: center;
   min-height: calc(100svh - 96px);
-  padding: 0 0 12vh;
+  padding: 0 0 14vh;
 }
 
 .hero-copy h1,
@@ -102,7 +106,9 @@ img {
   color: #fff3dc;
   letter-spacing: 0;
   word-break: keep-all;
-  text-shadow: 0 12px 32px rgba(0, 0, 0, 0.36);
+  text-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.34),
+    0 14px 38px rgba(0, 0, 0, 0.24);
 }
 
 .hero-copy h1 {
@@ -115,7 +121,7 @@ img {
 .hero-copy p {
   max-width: 620px;
   margin-top: 30px;
-  color: rgba(255, 243, 220, 0.88);
+  color: rgba(255, 243, 220, 0.9);
   font-size: clamp(1rem, 1.4vw, 1.22rem);
   font-weight: 600;
   line-height: 1.95;
@@ -126,16 +132,73 @@ img {
   font-weight: 900;
 }
 
+.scroll-cue {
+  position: absolute;
+  right: 0;
+  bottom: 38px;
+  left: 0;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  width: max-content;
+  margin: 0 auto;
+  color: #fff8ea;
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.42);
+}
+
+.chevron-stack {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 36px;
+  height: 34px;
+  margin-bottom: 4px;
+}
+
+.chevron-stack span {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-right: 4px solid currentColor;
+  border-bottom: 4px solid currentColor;
+  opacity: 0;
+  transform: rotate(45deg) translate(-8px, -8px);
+  animation: scrollChevron 1.55s infinite;
+}
+
+.chevron-stack span:nth-child(1) {
+  top: 0;
+  animation-delay: 0s;
+}
+
+.chevron-stack span:nth-child(2) {
+  top: 8px;
+  animation-delay: 0.18s;
+}
+
+.chevron-stack span:nth-child(3) {
+  top: 16px;
+  animation-delay: 0.36s;
+}
+
+.scroll-text {
+  display: block;
+  animation: scrollText 1.55s ease-in-out infinite;
+}
+
 .impact-section {
   position: relative;
   display: grid;
   gap: 26px;
-  padding: 26px 0 96px;
+  padding: 30px 0 96px;
+  color: #3d3026;
 }
 
 .impact-kicker {
   margin: 0;
-  color: rgba(255, 243, 220, 0.74);
+  color: rgba(61, 48, 38, 0.72);
   font-size: 1rem;
   font-weight: 800;
   text-align: center;
@@ -153,18 +216,16 @@ img {
   min-height: 330px;
   gap: 34px;
   padding: 34px;
-  border: 1px solid rgba(255, 243, 220, 0.18);
+  border: 1px solid rgba(95, 71, 52, 0.14);
   border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 250, 240, 0.12), rgba(255, 250, 240, 0.04)),
-    rgba(255, 248, 232, 0.08);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
+  background: #fffdf7;
+  box-shadow: 0 24px 70px rgba(86, 62, 42, 0.11);
 }
 
 .impact-card span {
   display: block;
   margin-bottom: 12px;
-  color: rgba(255, 243, 220, 0.58);
+  color: rgba(105, 78, 57, 0.62);
   font-size: 0.84rem;
   font-weight: 900;
 }
@@ -178,13 +239,13 @@ img {
 }
 
 .impact-card h2 {
-  color: #fff8ea;
+  color: #3d3026;
   font-size: clamp(1.8rem, 2.6vw, 2.7rem);
   line-height: 1.15;
 }
 
 .impact-card p {
-  color: rgba(255, 243, 220, 0.78);
+  color: rgba(61, 48, 38, 0.72);
   font-size: 1.04rem;
   font-weight: 600;
   line-height: 1.7;
@@ -192,9 +253,38 @@ img {
 
 .impact-card strong {
   display: block;
-  color: #ffe8bb;
+  color: #8d5f3b;
   font-size: clamp(1.42rem, 2vw, 2rem);
   font-weight: 950;
+}
+
+@keyframes scrollChevron {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-10px, -10px);
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+}
+
+@keyframes scrollText {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(4px);
+  }
 }
 
 @media (max-width: 900px) {
@@ -208,12 +298,6 @@ img {
     object-position: 66% center;
   }
 
-  .hero-overlay {
-    background:
-      linear-gradient(180deg, rgba(15, 10, 7, 0.18) 0%, rgba(15, 10, 7, 0.38) 50%, #15100c 100%),
-      linear-gradient(90deg, rgba(17, 12, 9, 0.84) 0%, rgba(17, 12, 9, 0.5) 58%, rgba(17, 12, 9, 0.18) 100%);
-  }
-
   .site-header {
     min-height: 82px;
   }
@@ -224,7 +308,7 @@ img {
 
   .hero-copy {
     min-height: calc(100svh - 82px);
-    padding-bottom: 14vh;
+    padding-bottom: 16vh;
   }
 
   .hero-copy h1 {
@@ -260,6 +344,11 @@ img {
     margin-top: 24px;
     font-size: 0.98rem;
     line-height: 1.86;
+  }
+
+  .scroll-cue {
+    bottom: 30px;
+    font-size: 0.78rem;
   }
 
   .impact-section {

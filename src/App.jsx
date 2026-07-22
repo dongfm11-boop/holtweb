@@ -24,7 +24,6 @@ function App() {
     <main className="landing-page">
       <section className="hero" id="top" aria-label="지율이 후원 캠페인">
         <img className="hero-bg" src={jiyulWide} alt="" />
-        <div className="hero-overlay" />
 
         <header className="site-header">
           <a href="https://love.holt.or.kr/" aria-label="홀트아동복지회 홈페이지로 이동">
@@ -52,6 +51,15 @@ function App() {
             <strong>멈춰버린 지율이의 일상을 되찾아주세요.</strong>
           </p>
         </div>
+
+        <a className="scroll-cue" href="#impact" aria-label="후원 변화 보기 영역으로 이동">
+          <span className="chevron-stack" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+          <span className="scroll-text">scroll down</span>
+        </a>
       </section>
 
       <section className="impact-section" id="impact">
