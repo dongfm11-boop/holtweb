@@ -322,18 +322,7 @@ img {
   box-shadow:
     0 30px 82px rgba(86, 62, 42, 0.2),
     0 0 0 3px rgba(141, 95, 59, 0.16);
-}
-
-.impact-card-button.selected .impact-card-body::before {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 12px;
-  height: 12px;
-  border-radius: 999px;
-  background: #8d5f3b;
-  box-shadow: 0 0 20px rgba(141, 95, 59, 0.7);
-  content: "";
+  animation: selectedCardBorder 1.8s ease-in-out infinite;
 }
 
 .impact-card-image {
@@ -624,6 +613,24 @@ img {
     box-shadow:
       0 22px 52px rgba(86, 62, 42, 0.34),
       0 0 0 7px rgba(141, 95, 59, 0.14);
+  }
+}
+
+@keyframes selectedCardBorder {
+  0%,
+  100% {
+    border-color: #8d5f3b;
+    box-shadow:
+      0 30px 82px rgba(86, 62, 42, 0.2),
+      0 0 0 3px rgba(141, 95, 59, 0.16);
+  }
+
+  50% {
+    border-color: #b98457;
+    box-shadow:
+      0 34px 90px rgba(86, 62, 42, 0.24),
+      0 0 0 6px rgba(185, 132, 87, 0.18),
+      0 0 24px rgba(185, 132, 87, 0.28);
   }
 }
 
