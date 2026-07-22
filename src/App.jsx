@@ -29,6 +29,9 @@ function App() {
           <a href="https://love.holt.or.kr/" aria-label="홀트아동복지회 홈페이지로 이동">
             <img src={holtLogo} alt="홀트아동복지회" />
           </a>
+          <a className="story-link" href="https://support.holt.or.kr/jiyul">
+            지율이 사연 자세히보기
+          </a>
         </header>
 
         <div className="hero-copy">
