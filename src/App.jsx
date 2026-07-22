@@ -1,21 +1,48 @@
 import holtLogo from '../이미지/홀트로고.png';
+import rehabImage from '../이미지/소아재활.png';
+import hospitalImage from '../이미지/지율병원.png';
+import foodImage from '../이미지/지율이유식.png';
 import jiyulWide from '../이미지/지율정면와이드.png';
 
 const impactCards = [
   {
     amount: '정기 월 2만원',
-    name: '매일의 영양 보충',
-    effect: '삼킴이 어려운 아이에게 필요한 이유식과 영양식을 전합니다.',
+    name: '특수 영양식과 기저귀',
+    effect: (
+      <>
+        삼킴과 식사가 어려운 아이에게 필요한
+        <br />
+        특수 영양식과 위생용품 지원에 함께합니다.
+      </>
+    ),
+    image: foodImage,
+    imageAlt: '아이를 위한 이유식과 영양 지원 이미지',
   },
   {
     amount: '정기 월 5만원',
-    name: '재활의 한 걸음',
-    effect: '꾸준한 치료가 필요한 아이들의 재활치료와 병원 이동을 돕습니다.',
+    name: '재활치료 1회 지원',
+    effect: (
+      <>
+        운동·감각 발달을 돕는
+        <br />
+        재활치료 비용 지원에 함께합니다.
+      </>
+    ),
+    image: rehabImage,
+    imageAlt: '소아 재활치료 지원 이미지',
   },
   {
     amount: '정기 월 10만원',
-    name: '가족을 지키는 안전망',
-    effect: '치료비와 생계비가 함께 필요한 가정에 긴급 지원을 전합니다.',
+    name: '병원 이동과 의료비 지원',
+    effect: (
+      <>
+        정기 진료와 치료를 이어갈 수 있도록
+        <br />
+        교통비와 의료비 지원에 함께합니다.
+      </>
+    ),
+    image: hospitalImage,
+    imageAlt: '병원 진료와 의료비 지원 이미지',
   },
 ];
 
@@ -63,19 +90,24 @@ function App() {
           </span>
           <span className="scroll-text">scroll down</span>
         </a>
+
+        <p className="hero-impact-kicker">내 후원으로 만들 수 있는 변화 보기</p>
       </section>
 
       <section className="impact-section" id="impact">
-        <p className="impact-kicker">내 후원으로 만들 수 있는 변화 보기</p>
+        <div className="impact-kicker-placeholder" aria-hidden="true" />
 
         <div className="impact-grid">
           {impactCards.map((card) => (
             <article className="impact-card" key={card.amount}>
-              <div>
-                <h2>{card.name}</h2>
+              <div className="impact-card-image">
+                <img src={card.image} alt={card.imageAlt} />
               </div>
-              <p>{card.effect}</p>
-              <strong>{card.amount}</strong>
+              <div className="impact-card-body">
+                <h2>{card.name}</h2>
+                <p>{card.effect}</p>
+                <strong>{card.amount}</strong>
+              </div>
             </article>
           ))}
         </div>
