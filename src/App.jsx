@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import holtLogo from '../이미지/홀트로고.png';
 import rehabImage from '../이미지/소아재활.png';
 import hospitalImage from '../이미지/지율병원.png';
@@ -6,6 +7,7 @@ import jiyulWide from '../이미지/지율정면와이드.png';
 
 const impactCards = [
   {
+    id: 'nutrition',
     amount: '정기 월 2만원',
     name: '특수 영양식과 기저귀',
     effect: (
@@ -19,6 +21,7 @@ const impactCards = [
     imageAlt: '아이를 위한 이유식과 영양 지원 이미지',
   },
   {
+    id: 'rehab',
     amount: '정기 월 5만원',
     name: '재활치료 1회 지원',
     effect: (
@@ -32,6 +35,7 @@ const impactCards = [
     imageAlt: '소아 재활치료 지원 이미지',
   },
   {
+    id: 'medical',
     amount: '정기 월 10만원',
     name: '병원 이동과 의료비 지원',
     effect: (
@@ -47,6 +51,22 @@ const impactCards = [
 ];
 
 function App() {
+  const [selectedCards, setSelectedCards] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const hasSelection = selectedCards.length > 0;
+
+  const toggleCard = (cardId) => {
+    setSelectedCards((current) =>
+      current.includes(cardId) ? current.filter((id) => id !== cardId) : [...current, cardId],
+    );
+  };
+
+  const openPlanModal = () => {
+    if (hasSelection) {
+      setIsModalOpen(true);
+    }
+  };
+
   return (
     <main className="landing-page">
       <section className="hero" id="top" aria-label="지율이 후원 캠페인">
@@ -98,20 +118,71 @@ function App() {
         <div className="impact-kicker-placeholder" aria-hidden="true" />
 
         <div className="impact-grid">
-          {impactCards.map((card) => (
-            <article className="impact-card" key={card.amount}>
-              <div className="impact-card-image">
-                <img src={card.image} alt={card.imageAlt} />
-              </div>
-              <div className="impact-card-body">
-                <h2>{card.name}</h2>
-                <p>{card.effect}</p>
-                <strong>{card.amount}</strong>
-              </div>
-            </article>
-          ))}
+          {impactCards.map((card) => {
+            const isSelected = selectedCards.includes(card.id);
+            return (
+              <article className="impact-card" key={card.id}>
+                <button
+                  type="button"
+                  className={`impact-card-button${isSelected ? ' selected' : ''}`}
+                  onClick={() => toggleCard(card.id)}
+                  aria-pressed={isSelected}
+                >
+                  <div className="impact-card-image">
+                    <img src={card.image} alt={card.imageAlt} />
+                  </div>
+                  <div className="impact-card-body">
+                    <h2>{card.name}</h2>
+                    <p>{card.effect}</p>
+                    <strong>{card.amount}</strong>
+                  </div>
+                </button>
+              </article>
+            );
+          })}
         </div>
+
+        <button
+          type="button"
+          className={`plan-button${hasSelection ? ' active' : ''}`}
+          onClick={openPlanModal}
+          disabled={!hasSelection}
+        >
+          이 후원 계획 담기
+        </button>
       </section>
+
+      {isModalOpen ? (
+        <div className="modal-backdrop" role="presentation" onMouseDown={() => setIsModalOpen(false)}>
+          <section
+            className="plan-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="plan-modal-title"
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="modal-close"
+              onClick={() => setIsModalOpen(false)}
+              aria-label="팝업 닫기"
+            >
+              ×
+            </button>
+            <h2 id="plan-modal-title">나의 후원 계획을 저장해 드릴까요?</h2>
+            <p>선택하신 후원 내용과 아이들의 이야기를 이메일로 보내드립니다.</p>
+            <form className="plan-form" onSubmit={(event) => event.preventDefault()}>
+              <label htmlFor="support-email">이메일 주소</label>
+              <input id="support-email" type="email" placeholder="name@example.com" required />
+              <label className="consent-row">
+                <input type="checkbox" />
+                <span>후원 소식 및 캠페인 안내 수신 동의</span>
+              </label>
+              <button type="submit">이메일로 저장하기</button>
+            </form>
+          </section>
+        </div>
+      ) : null}
     </main>
   );
 }
