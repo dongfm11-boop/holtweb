@@ -203,8 +203,8 @@ function App() {
               </div>
             ) : (
               <>
-                <p className="modal-eyebrow">Holt Children&apos;s Services</p>
-                <h2 id="plan-modal-title">나의 후원 계획을 저장해 드릴까요?</h2>
+                <img className="modal-logo" src={holtLogo} alt="홀트아동복지회" />
+                <h2 id="plan-modal-title">이메일로 후원 계획 저장하기</h2>
                 <p>선택하신 후원 내용과 아이들의 이야기를 이메일로 보내드립니다.</p>
                 <form className="plan-form" onSubmit={(event) => {
                   event.preventDefault();

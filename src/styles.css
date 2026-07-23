@@ -493,7 +493,7 @@ img {
   padding-right: 42px;
   color: #244b91;
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.24;
 }
 
@@ -511,6 +511,13 @@ img {
   color: #3d64aa;
   font-size: 14px;
   font-weight: 600;
+}
+
+.modal-logo {
+  display: block;
+  width: 154px;
+  height: auto;
+  margin: 0 0 22px;
 }
 
 .plan-form {
