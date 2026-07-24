@@ -387,6 +387,10 @@ img {
 
 .plan-button {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   justify-self: center;
   overflow: hidden;
   min-width: min(100%, 360px);
@@ -408,6 +412,10 @@ img {
     color 180ms ease,
     filter 180ms ease,
     transform 180ms ease;
+}
+
+.plan-button-icon {
+  flex: 0 0 auto;
 }
 
 .plan-button.active {

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ShoppingCart } from 'lucide-react';
 import holtLogo from '../이미지/홀트로고.png';
 import rehabImage from '../이미지/소아재활.png';
 import hospitalImage from '../이미지/지율병원.png';
@@ -168,6 +169,7 @@ function App() {
           onClick={openPlanModal}
           disabled={!hasSelection}
         >
+          <ShoppingCart className="plan-button-icon" size={22} strokeWidth={2.2} aria-hidden="true" />
           이 후원 계획 담기
         </button>
       </section>
