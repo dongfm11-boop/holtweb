@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Griun Fromsol";
+  src: url("../font/Griun_Fromsol-Rg.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   color: #fff8e8;
   background: #fff8ea;
@@ -131,8 +139,9 @@ img {
 
 .hero-copy h1 {
   max-width: 800px;
+  font-family: "Griun Fromsol", Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
   font-size: 35px;
-  font-weight: 900;
+  font-weight: 400;
   line-height: 1.28;
 }
 
@@ -169,27 +178,91 @@ img {
   animation: scrollCueGlow 1.9s ease-in-out infinite;
 }
 
-.scroll-cue::before,
-.scroll-cue::after {
+.scroll-sparkles {
   position: absolute;
-  top: 18px;
-  width: 7px;
-  height: 7px;
+  top: -7px;
+  left: 50%;
+  width: 92px;
+  height: 64px;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.scroll-sparkles span {
+  position: absolute;
+  top: var(--sparkle-y);
+  left: var(--sparkle-x);
+  width: var(--sparkle-size);
+  height: var(--sparkle-size);
   border-radius: 999px;
-  background: #fff8ea;
-  box-shadow: 0 0 14px rgba(255, 248, 234, 0.95);
-  content: "";
+  background: #ffffff;
+  box-shadow:
+    0 0 8px rgba(255, 255, 255, 0.96),
+    0 0 18px rgba(255, 255, 255, 0.72);
   opacity: 0;
-  animation: sparkle 1.8s ease-in-out infinite;
+  transform: translate(0, 8px) scale(0.4);
+  animation: sparkleDrift var(--sparkle-duration) ease-in-out infinite;
+  animation-delay: var(--sparkle-delay);
 }
 
-.scroll-cue::before {
-  left: 10px;
+.scroll-sparkles span:nth-child(1) {
+  --sparkle-x: 18px;
+  --sparkle-y: 22px;
+  --sparkle-size: 5px;
+  --sparkle-dx: -5px;
+  --sparkle-dy: -9px;
+  --sparkle-dx-end: -11px;
+  --sparkle-dy-end: -16px;
+  --sparkle-duration: 2.2s;
+  --sparkle-delay: 0.1s;
 }
 
-.scroll-cue::after {
-  right: 10px;
-  animation-delay: 0.6s;
+.scroll-sparkles span:nth-child(2) {
+  --sparkle-x: 54px;
+  --sparkle-y: 6px;
+  --sparkle-size: 8px;
+  --sparkle-dx: 7px;
+  --sparkle-dy: -4px;
+  --sparkle-dx-end: 15px;
+  --sparkle-dy-end: -11px;
+  --sparkle-duration: 2.85s;
+  --sparkle-delay: 0.7s;
+}
+
+.scroll-sparkles span:nth-child(3) {
+  --sparkle-x: 66px;
+  --sparkle-y: 34px;
+  --sparkle-size: 4px;
+  --sparkle-dx: 9px;
+  --sparkle-dy: 4px;
+  --sparkle-dx-end: 17px;
+  --sparkle-dy-end: 2px;
+  --sparkle-duration: 2.45s;
+  --sparkle-delay: 1.35s;
+}
+
+.scroll-sparkles span:nth-child(4) {
+  --sparkle-x: 33px;
+  --sparkle-y: 3px;
+  --sparkle-size: 6px;
+  --sparkle-dx: -8px;
+  --sparkle-dy: -3px;
+  --sparkle-dx-end: -16px;
+  --sparkle-dy-end: -8px;
+  --sparkle-duration: 3.05s;
+  --sparkle-delay: 1.9s;
+}
+
+.scroll-sparkles span:nth-child(5) {
+  --sparkle-x: 43px;
+  --sparkle-y: 42px;
+  --sparkle-size: 7px;
+  --sparkle-dx: 3px;
+  --sparkle-dy: 8px;
+  --sparkle-dx-end: 6px;
+  --sparkle-dy-end: 13px;
+  --sparkle-duration: 2.65s;
+  --sparkle-delay: 2.25s;
 }
 
 .chevron-stack {
@@ -673,16 +746,26 @@ img {
   }
 }
 
-@keyframes sparkle {
+@keyframes sparkleDrift {
   0%,
   100% {
     opacity: 0;
-    transform: translateY(8px) scale(0.7);
+    transform: translate(0, 8px) scale(0.4);
   }
 
-  45% {
+  28% {
+    opacity: 0.92;
+    transform: translate(var(--sparkle-dx), var(--sparkle-dy)) scale(1);
+  }
+
+  58% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate(var(--sparkle-dx-end), var(--sparkle-dy-end)) scale(0.72);
+  }
+
+  78% {
+    opacity: 0;
+    transform: translate(var(--sparkle-dx-end), var(--sparkle-dy-end)) scale(0.35);
   }
 }
 

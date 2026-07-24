@@ -129,6 +129,13 @@ function App() {
             <span />
             <span />
           </span>
+          <span className="scroll-sparkles" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </span>
           <span className="scroll-text">scroll down</span>
         </a>
 
