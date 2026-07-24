@@ -97,9 +97,14 @@ function App() {
           <a href="https://love.holt.or.kr/" aria-label="홀트아동복지회 홈페이지로 이동">
             <img src={holtLogo} alt="홀트아동복지회" />
           </a>
-          <a className="story-link" href="https://support.holt.or.kr/jiyul">
-            지율이 사연 자세히보기
-          </a>
+          <div className="story-aside">
+            <a className="story-link" href="https://support.holt.or.kr/jiyul">
+              지율이 사연 자세히보기
+            </a>
+            <p className="story-note">
+              *본 사연은 위기에 처한 가족의 실제 상황이며, 아동보호를 위해 가명과 대역을 사용했습니다.
+            </p>
+          </div>
         </header>
 
         <div className="hero-copy">
@@ -111,15 +116,27 @@ function App() {
             내일을 위해
           </h1>
           <p>
-            희귀질환으로 인한 가족의 치열한 싸움.
+            &apos;레트 증후군&apos;을 겪고 있는 지율이.
             <br />
-            지율이의 재활은 여전히 험난하지만,
+            혼자서 아무것도 할 수 없는 지율이는
             <br />
-            여러분의 도움은 아이의 성장에 기적을 만듭니다.
+            부모님의 밤낮없는 돌봄이 필요했습니다.
             <br />
-            여러분의 사랑으로
+            지율이네 가족의 하루는 생존을 위한 치열한 싸움입니다.
             <br />
-            <strong>멈춰버린 지율이의 일상을 되찾아주세요.</strong>
+            <br />
+            그럼에도 부모님은 오늘도 기도합니다.
+            <br />
+            아이만 웃을 수 있다면
+            <br />
+            빚도, 지금의 이 고통도 다 괜찮다고.
+            <br />
+            <br />
+            <strong>
+              작은 도움이 모여 만드는 기적이
+              <br />
+              지율이와 또 다른 아이들의 내일을 밝힙니다.
+            </strong>
           </p>
         </div>
 
