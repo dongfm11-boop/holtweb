@@ -121,7 +121,7 @@ img {
   display: grid;
   justify-items: end;
   gap: 8px;
-  max-width: 430px;
+  max-width: none;
   text-align: right;
 }
 
@@ -132,6 +132,7 @@ img {
   font-weight: 400;
   line-height: 1.45;
   text-shadow: 0 3px 12px rgba(93, 61, 40, 0.5);
+  white-space: nowrap;
   word-break: keep-all;
 }
 
@@ -175,6 +176,21 @@ img {
 .hero-copy strong {
   color: #fff8ea;
   font-weight: 500;
+}
+
+.hero-highlight {
+  display: inline;
+  padding: 0 0.16em 0.06em;
+  border-radius: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 248, 234, 0) 42%,
+    rgba(139, 93, 57, 0.46) 42%,
+    rgba(139, 93, 57, 0.46) 88%,
+    rgba(255, 248, 234, 0) 88%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .scroll-cue {
@@ -857,7 +873,8 @@ img {
   }
 
   .story-aside {
-    max-width: 340px;
+    gap: 6px;
+    max-width: none;
   }
 
   .hero-copy {
@@ -905,9 +922,9 @@ img {
   }
 
   .story-note {
-    max-width: 260px;
-    font-size: 10.5px;
-    line-height: 1.42;
+    max-width: none;
+    font-size: 8px;
+    line-height: 1.35;
   }
 
   .scroll-cue {

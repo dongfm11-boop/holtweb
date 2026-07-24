@@ -135,7 +135,7 @@ function App() {
             <strong>
               작은 도움이 모여 만드는 기적이
               <br />
-              지율이와 또 다른 아이들의 내일을 밝힙니다.
+              <span className="hero-highlight">지율이와 또 다른 아이들의 내일을 밝힙니다.</span>
             </strong>
           </p>
         </div>
