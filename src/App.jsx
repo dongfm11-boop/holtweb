@@ -122,7 +122,7 @@ function App() {
             <br />
             부모님의 밤낮없는 돌봄이 필요했습니다.
             <br />
-            지율이네 가족의 하루는 생존을 위한 치열한 싸움입니다.
+            <span className="hero-highlight">지율이네 가족의 하루는 생존을 위한 치열한 싸움입니다.</span>
             <br />
             <br />
             그럼에도 부모님은 오늘도 기도합니다.
@@ -133,7 +133,7 @@ function App() {
             <br />
             <br />
             <strong>
-              작은 도움이 모여 만드는 기적이
+              <span className="hero-highlight">작은 도움이 모여 만드는 기적이</span>
               <br />
               <span className="hero-highlight">지율이와 또 다른 아이들의 내일을 밝힙니다.</span>
             </strong>

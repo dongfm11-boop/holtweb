@@ -185,8 +185,8 @@ img {
   background: linear-gradient(
     180deg,
     rgba(255, 248, 234, 0) 42%,
-    rgba(139, 93, 57, 0.46) 42%,
-    rgba(139, 93, 57, 0.46) 88%,
+    rgba(64, 105, 153, 0.5) 42%,
+    rgba(64, 105, 153, 0.5) 88%,
     rgba(255, 248, 234, 0) 88%
   );
   box-decoration-break: clone;
